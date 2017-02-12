@@ -4,11 +4,6 @@
 }
 
 {
-    "name": "Jeff Bridges",
-    "dob": "4-12-1949"
-}
-
-{
     "name": "Elizabeth Taylor",
     "dob": "27-2-1932",
 }
@@ -21,4 +16,9 @@
 {
     "name": "Richard Burton",
     "dob": "10-11-1925"
+}
+
+{
+    "name": "Jeff Bridges",
+    "dob": "4-12-1949"
 }
