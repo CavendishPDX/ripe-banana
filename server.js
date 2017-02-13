@@ -2,6 +2,7 @@
 const app = require('./lib/app');
 const connection = require('./lib/connection');
 const http = require('http');
+const mongoose = require('mongoose');
 const DB_URI = 'mongodb://localhost:27017/db';
 
 // the connection 
