@@ -7,7 +7,7 @@ mongoose.Promise = Promise;
 describe.only('actor schema', () => {
     it('example data with all fields', () => {
         return new Actor({ name: 'Sarah Paulson', dob: '17-12-1974' })
-            .validate()
+            .validate(Actor)
             .then(actor => console.log(actor))
             .catch(err => { throw err; });
     });
