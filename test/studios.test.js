@@ -16,9 +16,13 @@ describe('studios REST HTTP API', () => {
 
     const request = chai.request(app);
 
-    it('GET returns array of studios', () => {
+    it('GET returns array of studios', (done) => {
         return request.get('/studios')
             .then(req => req.body)
-            .then(studios => assert.deepEqual(studios, []));
+            .then(studios => {
+                assert.deepEqual(studios, []);
+                done();
+            });
+
     });
 }); //end describe
