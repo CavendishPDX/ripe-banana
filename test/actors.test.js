@@ -34,6 +34,11 @@ describe('actors REST HTTP API', () => {
                 assert.deepEqual(res, []);
             });
     });
-
     
-});
+    it('finds an actor by their id', () => {
+        return request.get(`/actors/${sarah._id}`)
+                .then(res => {
+                    assert.deepEqual(res.body, sarah);
+                });
+        });
+    });
