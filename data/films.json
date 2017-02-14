@@ -1,4 +1,4 @@
-{
+[{
         "title":  "The Big Lebowski",
         "studio": "58a342a78b19786bae2b414d",
         "released": "6-3-1998",
@@ -7,7 +7,7 @@
             "rating": 5,
             "review": "A hilariously clever romp with fine performances and great pacing"
         }]
-}
+},
 
 {
         "title":  "Who's Afraid of Virginia Woolf",
@@ -18,7 +18,7 @@
             "rating": 5,
             "review": "An undisputed classic featuring stunning performances from world-class actors"
         }]
-}
+},
 
 {
         "title":  "The Giver",
@@ -29,7 +29,7 @@
             "rating": 3,
             "review": "Enjoyable, with stellar performances from Meryl Streep and Jeff Bridges, but ultimately forgettable"
         }]
-}
+},
 
 {
         "title":  "Serenity",
@@ -40,7 +40,7 @@
             "rating": 4,
             "review": "Will not disappoint either fans of the series 'Firefly' or people completely new to Joss Whedon's space western"
         }]
-}
+},
 
 {
         "title":  "It's Complicated",
@@ -51,4 +51,4 @@
             "rating": 4,
             "review": "Fast-paced, smart comedy showcasing the well-aged talents of Meryl Streep, Alec Baldwin and Steve Martin"
         }]
-    }
+    }]
