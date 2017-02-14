@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 
 mongoose.Promise = Promise;
 
-describe.only('actor schema', () => {
+describe('actor schema', () => {
     it('example data with all fields', () => {
         return new Actor({ name: 'Sarah Paulson', dob: '17-12-1974' })
             .validate(Actor)

@@ -2,26 +2,43 @@ const chai = require('chai');
 const assert = chai.assert;
 const chaiHttp = require('chai-http');
 chai.use(chaiHttp);
-const connection = require('../lib/connection');
 const app = require('../lib/app');
 const mongoose = require('mongoose');
+const request = chai.request(app);
+
+process.env.MONGODB_URI = 'mongodb://localhost:27017/ripebanana-test';
+require('../lib/connection');
+
 
 describe('actors REST HTTP API', () => {
-    const DB_URI = 'mongodb://localhost:27017/ripe-banana-test';
-    let db = null;
-
-    before(() => connection.connect(DB_URI));
-    before(() => connection.db.dropDatabase());
-    after(() => connection.close());
-
-    const request = chai.request(app);
+    before(() => mongoose.connection.dropDatabase());
+    //mongoimport --db ripe-banana --collection films --drop --file 'data/films.json'
+    
+    let sarah = {
+        name: 'Sarah Paulson',
+        dob: '17-12-1974'
+    }
+    let jeff = {
+        name: 'Jeff Bridges',
+        dob: '4-12-1949'
+    }
+    let meryl = {
+        name: 'Meryl Streep',
+        dob: '22-8-1949'
+    }
 
     it('returns an empty array of actors', () => {
         return request.get('/actors')
             .then(req => req.body)
-            .then(actors => {
-                assert.deepEqual(actors, [])
-                done();
+            .then(res => {
+                assert.deepEqual(res, []);
             });
     });
-});
+    
+    it('finds an actor by their id', () => {
+        return request.get(`/actors/${sarah._id}`)
+                .then(res => {
+                    assert.deepEqual(res.body, sarah);
+                });
+        });
+    });
