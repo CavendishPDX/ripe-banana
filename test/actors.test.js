@@ -39,6 +39,7 @@ describe('actors REST HTTP API', () => {
         return request.get(`/actors/${sarah._id}`)
                 .then(res => {
                     assert.deepEqual(res.body, sarah);
+                    console.log(res.body)
                 });
         });
     });
