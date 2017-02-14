@@ -1,11 +1,11 @@
-{
+[{
     "name": "Universal Studios",
     "address": {
         "city": "Universal City",
         "state": "California",
         "country": "U.S.A"
     }
-}
+},
 
 {
     "name": "Warner Bros.",
@@ -14,7 +14,7 @@
         "state": "California",
         "country": "U.S.A"
     }
-}
+},
 
 {
     "name": "Walden Media",
@@ -23,4 +23,4 @@
         "state": "California",
         "country": "U.S.A"
     }
-}
+}]
