@@ -11,7 +11,7 @@ const assert = chai.assert;
 const chaiHttp = require('chai-http');
 chai.use(chaiHttp);
 
-process.env.MONGODB_URI = 'mongodb://localhost:27017/ripe-banana-tests';
+process.env.DB_URI = 'mongodb://localhost:27017/ripe-banana-tests';
 require('../../lib/connection');
 const mongoose = require('mongoose');
 
@@ -24,7 +24,7 @@ describe('films API', () => {
     }
 
     before(done => {
-        childProcess.exec('pwd', err => {
+        childProcess.exec(getCmd('films'), err => {
             if(err) return done(err);
             else{
                 childProcess.exec(getCmd('studios'), err => {
@@ -41,11 +41,12 @@ describe('films API', () => {
 
     it('GET returns a films array', () => {
         const filmsData = require('../../data/films.json');
-        console.log(filmsData);
         return request.get('/films')
         .then(res => {
             const films = res.body;
-            assert.deepEqual(films, filmsData);
+            console.log(films);
+            console.log(filmsData);
+            assert.deepEqual(films.length, filmsData.length);
         });
     });
 });
