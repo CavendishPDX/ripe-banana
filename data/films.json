@@ -1,7 +1,7 @@
 {
     "films" : [{
         "title":  "The Big Lebowski",
-        "studio": "//INSERT STUDIO ID FOR UNIVERSAL STUDIOS HERE",
+        "studio": "58a342a78b19786bae2b414d",
         "released": "6-3-1998",
         "actors": "//INSERT ACTOR ID FOR JEFF BRIDGES",
         "reviews": [{
@@ -12,7 +12,7 @@
 
     {
         "title":  "Who's Afraid of Virginia Woolf",
-        "studio": "//INSERT STUDIO ID FOR WARNER BROS",
+        "studio": "58a342a78b19786bae2b414e",
         "released": "22-6-1966",
         "actors": "//INSERT ACTOR ID FOR RICHARD BURTON AND ELIZABETH TAYLOR",
         "reviews": [{
@@ -23,7 +23,7 @@
 
     {
         "title":  "The Giver",
-        "studio": "//INSERT STUDIO ID FOR WALDEN MEDIA",
+        "studio": "58a342a78b19786bae2b414f",
         "released": "15-8-2014",
         "actors": "//INSERT ACTOR ID FOR MERYL STREEP AND JEFF BRIDGES",
         "reviews": [{
@@ -34,7 +34,7 @@
 
     {
         "title":  "Serenity",
-        "studio": "//INSERT STUDIO ID FOR UnIVERSAL STUDIOS",
+        "studio": "58a342a78b19786bae2b414d",
         "released": "30-9-2005",
         "actors": "//INSERT ACTOR ID FOR SARAH PAULSON",
         "reviews": [{
@@ -45,7 +45,7 @@
 
     {
         "title":  "It's Complicated",
-        "studio": "//INSERT STUDIO ID FOR UNIVERSAL STUDIOS",
+        "studio": "58a342a78b19786bae2b414d",
         "released": "25-12-2009",
         "actors": "//INSERT ACTOR ID FOR MERYL STREEP",
         "reviews": [{
