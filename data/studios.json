@@ -1,0 +1,26 @@
+[{
+    "name": "Universal Studios",
+    "address": {
+        "city": "Universal City",
+        "state": "California",
+        "country": "U.S.A"
+    }
+},
+
+{
+    "name": "Warner Bros.",
+    "address": {
+        "city": "Burbank",
+        "state": "California",
+        "country": "U.S.A"
+    }
+},
+
+{
+    "name": "Walden Media",
+    "address": {
+        "city": "Los Angeles",
+        "state": "California",
+        "country": "U.S.A"
+    }
+}]
