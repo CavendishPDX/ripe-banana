@@ -6,14 +6,27 @@ const assert = chai.assert;
 const chaiHttp = require('chai-http');
 chai.use(chaiHttp);
 
+const mongoose = require('mongoose');
 process.env.DB_URI = 'mongodb://localhost:27017/ripe-banana-tests';
 require('../../lib/connection');
-const mongoose = require('mongoose');
 
 
 describe('films API', () => {
     const request = chai.request(app);
     let films1 = {};
+
+    let seventhSon = {};
+
+    function saveFilm(film) {
+        //console.log('in saveFilm ', film);
+        return request.post('/films')
+            .send(film)
+            .then(res => {
+                return res.body;
+            });
+    }
+
+
 
     before(() => mongoose.connection.dropDatabase());
 
@@ -56,31 +69,25 @@ describe('films API', () => {
         });
     });
 
-    let seventhSon = {
-        title: 'Seventh Son',
-        studio: films1.studio,
-        released: '17-12-2014',
-        actors: films1.actors,
-        reviews:
-            [{
-                rating: 2,
-                review: 'This movie sucked eggs'
-            }]
-    };
-
-    function saveFilm(film) {
-        return request.post ('/films')
-            .send(film)
-            .then(res => res.body);
-    }
-
     it('saves a new film to database', () => {
+        seventhSon = {
+        "title":  "Seventh Son",
+        "studio": films1.studio,
+        "released": "6-3-1998",
+        "actors": films1.actors,
+        "reviews": [{
+            "rating": 5,
+            "review": "A hilariously clever romp with fine performances and great pacing"
+        }]
+    }
         return saveFilm(seventhSon)
             .then(savedFilm => {
-                assert.isOk(savedFilm._id);
+                assert.isDefined(savedFilm._id, 'the id is not undefined');
                 seventhSon._id = savedFilm._id;
                 seventhSon.__v = 0;
-                assert.deepEqual(savedFilm, seventhSon);
+                //Can't deep equal objects because the review is assigned a mongo id
+                assert.equal(savedFilm.title, seventhSon.title);
+                assert.deepEqual(savedFilm.actors, seventhSon.actors);
             });
     });
 });
