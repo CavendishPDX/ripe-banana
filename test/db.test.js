@@ -1,8 +1,10 @@
-const connection = require('../lib/connection');
 const assert = require('chai').assert;
+const mongoose = require('mongoose');
+const connection = require('../lib/connection');
+
+DB_URI = 'mongodb://localhost:27017/ripebanana-test';
 
 describe('connect to db', () => {
-    const DB_URI = 'mongodb://localhost:27017/local';
     let db = null;
 
     before(() => {

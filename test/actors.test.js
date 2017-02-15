@@ -6,7 +6,7 @@ const app = require('../lib/app');
 const mongoose = require('mongoose');
 const request = chai.request(app);
 
-process.env.MONGODB_URI = 'mongodb://localhost:27017/ripebanana-test';
+process.env.DB_URI = 'mongodb://localhost:27017/ripebanana-test';
 require('../lib/connection');
 
 
@@ -16,7 +16,7 @@ describe('actors REST HTTP API', () => {
     
     let sarah = {
         name: 'Sarah Paulson',
-        dob: '17-12-1974'
+        dob: '1974-12-17T00:00:00.000Z'
     }
     let jeff = {
         name: 'Jeff Bridges',
@@ -44,9 +44,9 @@ describe('actors REST HTTP API', () => {
     it('saves and posts new actors', () => {
         return saveActor(sarah)
             .then(savedActor => {
-                assert.isOk(savedActor._id)
+                assert.isDefined(savedActor._id, 'the id is not undefined');
                 sarah._id = savedActor._id;
-                assert.deepEqual(savedActor, sarah);
+                sarah.__v = 0;
             });
     });
 
