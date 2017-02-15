@@ -55,4 +55,32 @@ describe('films API', () => {
             assert.equal(lebowski.title, 'The Big Lebowski');
         });
     });
+
+    let seventhSon = {
+        title: 'Seventh Son',
+        studio: films1.studio,
+        released: '17-12-2014',
+        actors: films1.actors,
+        reviews:
+            [{
+                rating: 2,
+                review: 'This movie sucked eggs'
+            }]
+    };
+
+    function saveFilm(film) {
+        return request.post ('/films')
+            .send(film)
+            .then(res => res.body);
+    }
+
+    it('saves a new film to database', () => {
+        return saveFilm(seventhSon)
+            .then(savedFilm => {
+                assert.isOk(savedFilm._id);
+                seventhSon._id = savedFilm._id;
+                seventhSon.__v = 0;
+                assert.deepEqual(savedFilm, seventhSon);
+            });
+    });
 });
