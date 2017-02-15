@@ -6,7 +6,7 @@ const app = require('../lib/app');
 const mongoose = require('mongoose');
 const request = chai.request(app);
 
-process.env.MONGODB_URI = 'mongodb://localhost:27017/ripebanana-test';
+process.env.DB_URI = 'mongodb://localhost:27017/ripebanana-test';
 require('../lib/connection');
 
 
@@ -16,7 +16,7 @@ describe('actors REST HTTP API', () => {
     
     let sarah = {
         name: 'Sarah Paulson',
-        dob: '17-12-1974'
+        dob: '1974-12-17T00:00:00.000Z'
     }
     let jeff = {
         name: 'Jeff Bridges',
@@ -27,6 +27,12 @@ describe('actors REST HTTP API', () => {
         dob: '22-8-1949'
     }
 
+    function saveActor(actor) {
+        return request.post('/actors')
+            .send(actor)
+            .then(res => res.body);
+    }
+
     it('returns an empty array of actors', () => {
         return request.get('/actors')
             .then(req => req.body)
@@ -35,11 +41,20 @@ describe('actors REST HTTP API', () => {
             });
     });
     
+    it('saves and posts new actors', () => {
+        return saveActor(sarah)
+            .then(savedActor => {
+                assert.isDefined(savedActor._id, 'the id is not undefined');
+                sarah._id = savedActor._id;
+                sarah.__v = 0;
+            });
+    });
+
     it('finds an actor by their id', () => {
         return request.get(`/actors/${sarah._id}`)
                 .then(res => {
                     assert.deepEqual(res.body, sarah);
                     console.log(res.body)
                 });
-        });
     });
+});
