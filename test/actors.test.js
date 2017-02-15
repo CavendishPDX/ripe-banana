@@ -27,6 +27,12 @@ describe('actors REST HTTP API', () => {
         dob: '22-8-1949'
     }
 
+    function saveActor(actor) {
+        return request.post('/actors')
+            .send(actor)
+            .then(res => res.body);
+    }
+
     it('returns an empty array of actors', () => {
         return request.get('/actors')
             .then(req => req.body)
@@ -35,6 +41,15 @@ describe('actors REST HTTP API', () => {
             });
     });
     
+    it('saves and posts new actors', () => {
+        return saveActor(sarah)
+            .then(savedActor => {
+                assert.isOk(savedActor._id)
+                sarah._id = savedActor._id;
+                assert.deepEqual(savedActor, sarah);
+            });
+    });
+
     it('finds an actor by their id', () => {
         return request.get(`/actors/${sarah._id}`)
                 .then(res => {
