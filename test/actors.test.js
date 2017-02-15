@@ -41,5 +41,5 @@ describe('actors REST HTTP API', () => {
                     assert.deepEqual(res.body, sarah);
                     console.log(res.body)
                 });
-        });
     });
+});
